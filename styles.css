@@ -391,3 +391,112 @@ footer a {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* =========================================================
+   Pantalla de bienvenida con fuegos artificiales
+   ========================================================= */
+body.welcome-open { overflow: hidden; }
+
+.welcome {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(47, 95, 224, 0.35), transparent 60%),
+    rgba(5, 11, 26, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.welcome.closing {
+  opacity: 0;
+  visibility: hidden;
+}
+.welcome[hidden] { display: none; }
+
+.fireworks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.welcome-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  padding: 34px 26px 28px;
+  border-radius: 28px;
+  text-align: center;
+  color: var(--white);
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  animation: pop-in 0.9s cubic-bezier(.2, .9, .3, 1.2) both;
+}
+.welcome.closing .welcome-card { transform: scale(0.94); transition: transform 0.7s ease; }
+
+.welcome-logo {
+  width: 70%;
+  max-width: 230px;
+  height: auto;
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
+}
+.welcome .eyebrow { margin-bottom: 6px; }
+.welcome h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2rem, 9vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 30%, var(--accent-300) 70%, #ffd36b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 4px 18px rgba(47, 95, 224, 0.5));
+}
+.welcome-text {
+  margin: 12px auto 24px;
+  max-width: 320px;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+.welcome-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 38px;
+  border: 1px solid rgba(169, 198, 255, 0.5);
+  border-radius: 100px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(47, 95, 224, 0.85), rgba(28, 62, 140, 0.75));
+  box-shadow: 0 12px 30px rgba(47, 95, 224, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: var(--transition);
+  animation: glow 2.4s ease-in-out infinite;
+}
+.welcome-btn span { font-size: 1.3rem; line-height: 1; transition: var(--transition); }
+.welcome-btn:hover { transform: translateY(-3px); }
+.welcome-btn:hover span { transform: translateX(4px); }
+.welcome-btn:focus-visible { outline: 2px solid var(--accent-300); outline-offset: 4px; }
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.92); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 12px 30px rgba(47, 95, 224, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+  50%      { box-shadow: 0 12px 40px rgba(111, 163, 250, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+}

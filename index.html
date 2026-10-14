@@ -15,8 +15,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="welcome-open">
 <div class="bg" aria-hidden="true"></div>
+
+<!-- PANTALLA DE BIENVENIDA -->
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+  <canvas class="fireworks" id="fireworks" aria-hidden="true"></canvas>
+  <div class="welcome-card">
+    <img class="welcome-logo" src="logo-galilea.png" alt="Galilea">
+    <p class="eyebrow">Iglesia Cuadrangular</p>
+    <h2 id="welcome-title">¡Bienvenido!</h2>
+    <p class="welcome-text">¡Qué alegría que estés aquí! Te esperamos con los brazos abiertos. Dios te bendiga.</p>
+    <button class="welcome-btn" id="welcome-btn" type="button">Ingresar <span aria-hidden="true">›</span></button>
+  </div>
+</div>
+
 <main>
   <header>
     <img class="logo" src="logo-galilea.png" alt="Galilea">
@@ -133,6 +146,6 @@
     © <span id="y"></span>
   </footer>
 </main>
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+<script src="script.js"></script>
 </body>
 </html>
