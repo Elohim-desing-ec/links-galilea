@@ -420,12 +420,13 @@ body.welcome-open { overflow: hidden; }
 .fireworks {
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
 .welcome-card {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: 400px;
   padding: 34px 26px 28px;
@@ -499,4 +500,57 @@ body.welcome-open { overflow: hidden; }
 @keyframes glow {
   0%, 100% { box-shadow: 0 12px 30px rgba(47, 95, 224, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
   50%      { box-shadow: 0 12px 40px rgba(111, 163, 250, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+}
+
+/* Bienvenida en celular: igual que en computadora, con el templo de fondo,
+   tarjeta compacta al centro y fuegos artificiales alrededor */
+@media (max-width: 899px) {
+  .welcome {
+    overflow: hidden;
+    background: var(--navy-950);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .welcome::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background: url("portada-iglesia.jpg") 38% center / cover no-repeat;
+    filter: blur(5px) brightness(0.8);
+  }
+  .welcome::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(47, 95, 224, 0.35), transparent 60%),
+      rgba(5, 11, 26, 0.6);
+  }
+  .welcome-card {
+    max-width: 330px;
+    padding: 26px 20px 24px;
+    border-radius: 26px;
+  }
+  .welcome-logo {
+    width: 60%;
+    margin-bottom: 12px;
+  }
+  .welcome h2 { font-size: 2.1rem; }
+  .welcome-text {
+    margin: 10px auto 20px;
+    font-size: 0.95rem;
+  }
+  .welcome-btn { padding: 13px 34px; }
+}
+
+/* Celulares angostos: íconos de redes y horarios caben en una sola fila */
+@media (max-width: 400px) {
+  .schedule { padding: 18px 16px; }
+  .schedule li { font-size: 0.88rem; gap: 8px; }
+  .socials { gap: 8px; }
+  .socials a {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+  }
 }

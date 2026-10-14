@@ -41,7 +41,11 @@ const GRAVITY = 0.12;
 
 function launch() {
   const x = rand(width * 0.1, width * 0.9);
-  const targetY = rand(height * 0.06, height * 0.26);
+  // En pantallas verticales (celular) explotan arriba y abajo de la tarjeta
+  const portrait = height > width * 1.2;
+  const targetY = portrait && Math.random() < 0.4
+    ? rand(height * 0.8, height * 0.92)
+    : rand(height * 0.05, height * (portrait ? 0.2 : 0.26));
   // Velocidad justa para llegar a la altura de explosión
   const vy = -Math.sqrt(2 * GRAVITY * (height - targetY)) * rand(1.02, 1.08);
   rockets.push({
