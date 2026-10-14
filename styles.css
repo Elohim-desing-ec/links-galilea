@@ -1,0 +1,184 @@
+/* Colores tomados de iglesiacuadrangulargalilea.org */
+:root {
+  --navy-950: #050b1a;
+  --navy-900: #0a1a33;
+  --navy-800: #102544;
+  --navy-700: #17335c;
+  --accent-400: #6fa3fa;
+  --accent-500: #2f5fe0;
+  --accent-600: #1c3e8c;
+  --text-light: #edf2fb;
+  --text-muted: #9fb0ce;
+  --white: #ffffff;
+  --shadow-accent: 0 10px 30px rgba(47,95,224,0.28);
+  --transition: 0.35s cubic-bezier(.4,0,.2,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  color: var(--text-light);
+  background: var(--navy-950);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(47,95,224,0.22), transparent 45%),
+    radial-gradient(circle at 90% 60%, rgba(47,95,224,0.12), transparent 50%),
+    linear-gradient(180deg, var(--navy-950), var(--navy-900));
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+main {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 16px 16px 32px;
+}
+
+/* Portada */
+.cover {
+  position: relative;
+  height: 230px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid; place-items: center;
+  background:
+    linear-gradient(0deg, rgba(5,11,26,0.85), rgba(5,11,26,0.35) 60%),
+    linear-gradient(100deg, rgba(5,11,26,0.75) 10%, rgba(5,11,26,0.3) 70%),
+    url("portada-iglesia.jpg") center/cover no-repeat;
+  box-shadow: 0 20px 60px rgba(5,11,26,0.5);
+  border: 1px solid var(--navy-700);
+}
+.cover::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle at 15% 20%, rgba(47,95,224,0.25), transparent 50%);
+}
+.cover img { position: relative; z-index: 1; width: 62%; max-width: 280px; height: auto; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.5)); }
+
+/* Encabezado */
+header { text-align: center; margin: 26px 0 24px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent-400);
+  margin-bottom: 10px;
+}
+.eyebrow::before, .eyebrow::after { content: ""; width: 24px; height: 2px; background: var(--accent-500); }
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 6.5vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--white);
+}
+h1 em { font-style: normal; color: var(--accent-400); }
+.tagline { margin-top: 8px; color: var(--text-muted); font-size: 1rem; }
+.verse {
+  margin: 16px auto 0;
+  max-width: 420px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--accent-500);
+  background: rgba(47,95,224,0.08);
+  border-radius: 0 12px 12px 0;
+  color: var(--text-light);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-align: left;
+}
+.verse b { display: block; color: var(--accent-400); font-size: 0.8rem; font-weight: 600; margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Redes */
+.socials {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+  margin: 22px 0 28px;
+}
+.socials a {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: 14px;
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  color: var(--accent-400);
+  transition: var(--transition);
+}
+.socials a:hover { background: var(--accent-500); border-color: var(--accent-500); color: var(--white); transform: translateY(-3px); box-shadow: var(--shadow-accent); }
+.socials svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* Horarios */
+.schedule {
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  border-radius: 24px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+}
+.schedule h2, .links .group {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.schedule h2::before, .links .group::before { content: ""; width: 20px; height: 2px; background: var(--accent-500); }
+.schedule ul { list-style: none; }
+.schedule li {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--navy-700);
+  font-size: 0.95rem;
+  color: var(--text-light);
+}
+.schedule li:first-child { border-top: 0; }
+.schedule li span:last-child { color: var(--accent-400); font-weight: 600; white-space: nowrap; }
+
+/* Botones */
+.links { display: flex; flex-direction: column; gap: 12px; }
+.links a {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  color: var(--white);
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+.links a:hover { transform: translateY(-3px); border-color: var(--accent-500); box-shadow: var(--shadow-accent); }
+.links a.featured {
+  background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
+  border-color: transparent;
+  box-shadow: var(--shadow-accent);
+}
+.links a.featured:hover { box-shadow: 0 16px 36px rgba(47,95,224,0.4); }
+.links .icon {
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  background: rgba(47,95,224,0.12);
+  color: var(--accent-400);
+}
+.links a.featured .icon { background: rgba(255,255,255,0.18); color: var(--white); }
+.links .icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.links .label { flex: 1; }
+.links .label small { display: block; font-family: "Inter", sans-serif; font-weight: 400; color: var(--text-muted); font-size: 0.82rem; margin-top: 1px; }
+.links a.featured .label small { color: rgba(255,255,255,0.85); }
+.links .arrow { color: var(--accent-400); font-size: 1.3rem; transition: var(--transition); }
+.links a:hover .arrow { transform: translateX(4px); }
+.links a.featured .arrow { color: var(--white); }
+.links .group { margin: 20px 0 0; }
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+footer a { color: var(--accent-400); text-decoration: none; }
+.line { width: 48px; height: 3px; border-radius: 2px; background: var(--accent-500); margin: 0 auto 14px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
