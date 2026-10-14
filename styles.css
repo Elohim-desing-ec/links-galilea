@@ -1,5 +1,5 @@
 /* Colores tomados de iglesiacuadrangulargalilea.org
-   Estilo: fondo blanco con efecto vidrio (glassmorphism) */
+   Estilo: foto del templo de fondo con efecto vidrio (glassmorphism) */
 :root {
   --navy-950: #050b1a;
   --navy-900: #0a1a33;
@@ -14,11 +14,11 @@
   --white: #ffffff;
 
   /* Vidrio */
-  --glass: rgba(255, 255, 255, 0.45);
-  --glass-strong: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass: rgba(255, 255, 255, 0.62);
+  --glass-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.6);
   --glass-blur: blur(18px) saturate(170%);
-  --glass-shadow: 0 8px 32px rgba(28, 62, 140, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --glass-shadow: 0 8px 32px rgba(5, 11, 26, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   --glass-shadow-hover: 0 14px 40px rgba(47, 95, 224, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
   --transition: 0.35s cubic-bezier(.4, 0, .2, 1);
@@ -36,45 +36,20 @@ body {
   position: relative;
 }
 
-/* Manchas de color azul detrás del vidrio */
-.blobs {
+/* Foto del templo de fondo (fija, también funciona en iPhone) */
+.bg {
   position: fixed;
   inset: 0;
   z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(10, 26, 51, 0.35) 0%, rgba(10, 26, 51, 0.15) 40%, rgba(10, 26, 51, 0.45) 100%),
+    radial-gradient(circle at 15% 10%, rgba(47, 95, 224, 0.30), transparent 45%),
+    url("portada-iglesia.jpg") 38% center / cover no-repeat;
+  background-color: var(--navy-900);
 }
-.blobs span {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.65;
-  animation: float 18s ease-in-out infinite alternate;
-}
-.blobs span:nth-child(1) {
-  width: 420px; height: 420px;
-  top: -120px; left: -140px;
-  background: var(--accent-400);
-}
-.blobs span:nth-child(2) {
-  width: 360px; height: 360px;
-  top: 35%; right: -160px;
-  background: var(--accent-500);
-  opacity: 0.35;
-  animation-duration: 22s;
-  animation-delay: -6s;
-}
-.blobs span:nth-child(3) {
-  width: 380px; height: 380px;
-  bottom: -140px; left: -80px;
-  background: var(--accent-300);
-  animation-duration: 26s;
-  animation-delay: -12s;
-}
-@keyframes float {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(60px, 40px) scale(1.1); }
-  100% { transform: translate(-30px, 80px) scale(0.95); }
+/* En pantallas anchas se ve el templo completo */
+@media (min-width: 900px) {
+  .bg { background-position: center, center, center bottom; }
 }
 
 main {
@@ -96,36 +71,14 @@ main {
   box-shadow: var(--glass-shadow);
 }
 
-/* Portada */
-.cover {
-  position: relative;
-  height: 230px;
-  border-radius: 28px;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  background:
-    linear-gradient(0deg, rgba(10, 26, 51, 0.75), rgba(10, 26, 51, 0.25) 60%),
-    linear-gradient(100deg, rgba(28, 62, 140, 0.55) 10%, rgba(10, 26, 51, 0.1) 70%),
-    url("portada-iglesia.jpg") center/cover no-repeat;
-  border: 4px solid var(--glass-border);
-  box-shadow: 0 20px 50px rgba(28, 62, 140, 0.25);
-}
-/* Brillo de vidrio sobre la foto */
-.cover::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 35%);
-  pointer-events: none;
-}
-.cover img {
-  position: relative;
-  z-index: 1;
-  width: 62%;
-  max-width: 280px;
+/* Logo */
+.logo {
+  display: block;
+  width: 70%;
+  max-width: 300px;
   height: auto;
-  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.45));
+  margin: 18px auto 22px;
+  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.5));
 }
 
 /* Encabezado */
@@ -141,33 +94,33 @@ header {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--accent-500);
+  color: var(--accent-300);
   margin-bottom: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 .eyebrow::before,
 .eyebrow::after {
   content: "";
   width: 24px;
   height: 2px;
-  background: var(--accent-500);
+  background: var(--accent-300);
 }
 h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: clamp(1.6rem, 6.5vw, 2.1rem);
   line-height: 1.2;
-  color: var(--navy-900);
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 h1 em {
   font-style: normal;
-  background: linear-gradient(135deg, var(--accent-500), var(--accent-400));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent-300);
 }
 .tagline {
   margin-top: 8px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 2px 12px rgba(0, 0, 0, 0.5);
   font-size: 1rem;
 }
 .verse {
@@ -354,18 +307,24 @@ h1 em {
 }
 .links a:hover .arrow { transform: translateX(4px); }
 .links a.featured .arrow { color: var(--white); }
-.links .group { margin: 20px 0 0; }
+.links .group {
+  margin: 20px 0 0;
+  color: var(--white);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+.links .group::before { background: var(--accent-300); }
 
 /* Pie de página */
 footer {
   text-align: center;
   margin-top: 40px;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.82rem;
   line-height: 1.7;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 footer a {
-  color: var(--accent-500);
+  color: var(--accent-300);
   text-decoration: none;
   font-weight: 500;
 }
@@ -373,7 +332,7 @@ footer a {
   width: 48px;
   height: 3px;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent-500), var(--accent-400));
+  background: linear-gradient(90deg, var(--accent-400), var(--accent-300));
   margin: 0 auto 14px;
 }
 
