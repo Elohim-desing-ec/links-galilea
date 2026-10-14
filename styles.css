@@ -547,6 +547,7 @@ body.welcome-open { overflow: hidden; }
 @media (max-width: 400px) {
   .schedule { padding: 18px 16px; }
   .schedule li { font-size: 0.88rem; gap: 8px; }
+  .links a { padding: 13px 14px; gap: 12px; font-size: 0.94rem; }
   .socials { gap: 8px; }
   .socials a {
     width: 44px;
