@@ -1,5 +1,5 @@
 /* Colores tomados de iglesiacuadrangulargalilea.org
-   Estilo: foto del templo de fondo con efecto vidrio (glassmorphism) */
+   Estilo: foto del templo de fondo con vidrio transparente (glassmorphism) */
 :root {
   --navy-950: #050b1a;
   --navy-900: #0a1a33;
@@ -14,12 +14,15 @@
   --white: #ffffff;
 
   /* Vidrio */
-  --glass: rgba(255, 255, 255, 0.62);
-  --glass-strong: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-blur: blur(18px) saturate(170%);
-  --glass-shadow: 0 8px 32px rgba(5, 11, 26, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  --glass-shadow-hover: 0 14px 40px rgba(47, 95, 224, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  /* Vidrio transparente: casi no tiene color, solo desenfoca lo de atrás */
+  --glass: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --glass-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.09) 100%);
+  --glass-border: rgba(255, 255, 255, 0.22);
+  --glass-border-hover: rgba(255, 255, 255, 0.45);
+  --glass-blur: blur(14px) saturate(160%);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  --glass-shadow-hover: 0 14px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --glass-text-muted: rgba(255, 255, 255, 0.68);
 
   --transition: 0.35s cubic-bezier(.4, 0, .2, 1);
 }
@@ -96,6 +99,7 @@ main {
   backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 /* Logo */
@@ -155,15 +159,15 @@ h1 em {
   max-width: 440px;
   padding: 14px 18px;
   border-radius: 18px;
-  border-left: 3px solid var(--accent-500);
-  color: var(--navy-900);
+  border-left: 3px solid var(--accent-400);
+  color: var(--white);
   font-size: 0.92rem;
   line-height: 1.5;
   text-align: left;
 }
 .verse b {
   display: block;
-  color: var(--accent-500);
+  color: var(--accent-300);
   font-size: 0.78rem;
   font-weight: 600;
   margin-top: 4px;
@@ -185,15 +189,14 @@ h1 em {
   display: grid;
   place-items: center;
   border-radius: 16px;
-  color: var(--accent-500);
+  color: var(--white);
   transition: var(--transition);
 }
 .socials a:hover {
-  background: var(--accent-500);
-  border-color: var(--accent-500);
-  color: var(--white);
+  background: var(--glass-hover);
+  border-color: var(--glass-border-hover);
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(47, 95, 224, 0.35);
+  box-shadow: var(--glass-shadow-hover);
 }
 .socials svg {
   width: 20px;
@@ -212,7 +215,7 @@ h1 em {
   font-family: "Poppins", sans-serif;
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--navy-900);
+  color: var(--white);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -223,32 +226,32 @@ h1 em {
   content: "";
   width: 20px;
   height: 2px;
-  background: var(--accent-500);
+  background: var(--accent-400);
 }
 .schedule .place {
   margin: -6px 0 6px 30px;
   font-size: 0.82rem;
   font-weight: 500;
-  color: var(--accent-500);
+  color: var(--accent-300);
 }
 .schedule ul { list-style: none; }
 .schedule li small {
   display: block;
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: var(--glass-text-muted);
 }
 .schedule li {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   padding: 10px 0;
-  border-top: 1px solid rgba(28, 62, 140, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.95rem;
-  color: var(--navy-700);
+  color: rgba(255, 255, 255, 0.9);
 }
 .schedule li:first-child { border-top: 0; }
 .schedule li span:last-child {
-  color: var(--accent-500);
+  color: var(--accent-300);
   font-weight: 600;
   white-space: nowrap;
 }
@@ -266,7 +269,7 @@ h1 em {
   gap: 14px;
   padding: 14px 18px;
   border-radius: 20px;
-  color: var(--navy-900);
+  color: var(--white);
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -282,7 +285,7 @@ h1 em {
   left: -75%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0) 100%);
   transform: skewX(-20deg);
   transition: left 0.6s ease;
   pointer-events: none;
@@ -290,18 +293,21 @@ h1 em {
 .links a:hover::before { left: 125%; }
 .links a:hover {
   transform: translateY(-3px);
-  background: var(--glass-strong);
+  background: var(--glass-hover);
+  border-color: var(--glass-border-hover);
   box-shadow: var(--glass-shadow-hover);
 }
 
+/* Botón destacado: vidrio con tinte azul */
 .links a.featured {
-  background: linear-gradient(135deg, rgba(47, 95, 224, 0.92), rgba(28, 62, 140, 0.92));
-  border-color: rgba(255, 255, 255, 0.5);
-  color: var(--white);
-  box-shadow: 0 12px 30px rgba(47, 95, 224, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, rgba(47, 95, 224, 0.55), rgba(28, 62, 140, 0.35));
+  border-color: rgba(169, 198, 255, 0.45);
+  box-shadow: 0 12px 30px rgba(47, 95, 224, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
-.links a.featured:hover { box-shadow: 0 18px 40px rgba(47, 95, 224, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
-.links a.featured::before { background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%); }
+.links a.featured:hover {
+  background: linear-gradient(135deg, rgba(47, 95, 224, 0.7), rgba(28, 62, 140, 0.5));
+  box-shadow: 0 18px 40px rgba(47, 95, 224, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
 
 .links .icon {
   flex: none;
@@ -310,13 +316,13 @@ h1 em {
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(111, 163, 250, 0.25), rgba(47, 95, 224, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  color: var(--accent-500);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--accent-300);
 }
 .links a.featured .icon {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
   color: var(--white);
 }
 .links .icon svg {
@@ -333,13 +339,13 @@ h1 em {
   display: block;
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  color: var(--text-muted);
+  color: var(--glass-text-muted);
   font-size: 0.82rem;
   margin-top: 1px;
 }
 .links a.featured .label small { color: rgba(255, 255, 255, 0.85); }
 .links .arrow {
-  color: var(--accent-500);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1.3rem;
   transition: var(--transition);
 }
@@ -374,12 +380,12 @@ footer a {
   margin: 0 auto 14px;
 }
 
-/* Navegadores sin efecto vidrio: fondo blanco más sólido */
+/* Navegadores sin efecto vidrio: fondo azul oscuro semitransparente */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .schedule,
   .links a,
   .socials a,
-  .verse { background: rgba(255, 255, 255, 0.92); }
+  .verse { background: rgba(10, 26, 51, 0.75); }
 }
 
 @media (prefers-reduced-motion: reduce) {
