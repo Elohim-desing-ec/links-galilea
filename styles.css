@@ -225,7 +225,18 @@ h1 em {
   height: 2px;
   background: var(--accent-500);
 }
+.schedule .place {
+  margin: -6px 0 6px 30px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent-500);
+}
 .schedule ul { list-style: none; }
+.schedule li small {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
 .schedule li {
   display: flex;
   justify-content: space-between;
